@@ -42,9 +42,9 @@ gcloud auth configure-docker us-central1-docker.pkg.dev
 
 docker images
 
-docker tag Image_ID us-central1-docker.pkg.dev/PROJECT-ID/REPOSITORY/<Docker Image>:<Tag Name>
+docker tag Image_ID us-central1-docker.pkg.dev/PROJECT-ID/REPOSITORY/64a9d8ce8d73:v0.0.3
 
-docker push us-central1-docker.pkg.dev/PROJECT-ID/REPOSITORY/<Docker Image>:<Tag Name>
+docker push us-central1-docker.pkg.dev/PROJECT-ID/REPOSITORY/64a9d8ce8d73:v0.0.3
 
 
 
