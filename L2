@@ -3,7 +3,7 @@ export REPOSITORY=
 export PROJECT_ID=
 
 
-
+Task-1--------------------------------------------------------------------------------------------
 
 gcloud auth list
 
@@ -30,7 +30,7 @@ cd marking
 
 
 
-
+Task-2---------------------------------------------------------------------------------------
 
 
 
@@ -48,7 +48,7 @@ cd marking
 
 bash ~/marking/step2_v2.sh
 
-
+Task-3---------------------------------------------------------
 
 
 cd ..
@@ -67,16 +67,17 @@ docker images
 
 
 
-
-
 docker tag <IMAGE-ID> us-central1-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$DOCKER_IMAGE_WITH_TAG_NAME
-
 
 
 
 docker push us-central1-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$DOCKER_IMAGE_WITH_TAG_NAME
 sed -i s#IMAGE_HERE#us-central1-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$DOCKER_IMAGE_WITH_TAG_NAME#g k8s/deployment.yaml
 
+Task-4-----------------------------------------------------------------------------
+gcloud container clusters get-credentials valkyrie-dev --zone us-east1-d
+kubectl create -f k8s/deployment.yaml
+kubectl create -f k8s/service.yaml
 
 
 
