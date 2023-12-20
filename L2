@@ -1,6 +1,6 @@
-export DOCKER_IMAGE_WITH_TAG_NAME=valkyrie-prod:v0.0.2
-export REPOSITORY=valkyrie-repo
-export PROJECT_ID=qwiklabs-gcp-04-0344d82c468f
+export DOCKER_IMAGE_WITH_TAG_NAME=
+export REPOSITORY=
+export PROJECT_ID=
 
 
 
