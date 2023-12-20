@@ -1,8 +1,8 @@
-export INSTANCE=nucleus-jumphost-242
-export PORT_NO=8081
-export FIREWALL=permit-tcp-rule-637
-export REGION=us-east1
-export ZONE=us-east1-b
+export INSTANCE=
+export PORT_NO=
+export FIREWALL=
+export REGION=
+export ZONE=
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
