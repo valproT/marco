@@ -1,6 +1,16 @@
+export DOCKER_IMAGE_WITH_TAG_NAME=valkyrie-prod:v0.0.2
+export REPOSITORY=valkyrie-repo
+export PROJECT_ID=qwiklabs-gcp-04-0344d82c468f
+
+
+
+
 gcloud auth list
+
 gsutil cat gs://cloud-training/gsp318/marking/setup_marking_v2.sh | bash
+
 gcloud source repos clone valkyrie-app
+
 cd valkyrie-app
 cat > Dockerfile <<EOF
 FROM golang:1.10
@@ -9,49 +19,65 @@ COPY source .
 RUN go install -v
 ENTRYPOINT ["app","-single=true","-port=8080"]
 EOF
-docker build -t <Docker Image>:<Tag Name> .
+
+docker build -t $DOCKER_IMAGE_WITH_TAG_NAME .
+
 cd ..
+
 cd marking
+
 ./step1_v2.sh
 
 
 
 
-Task 2:-
+
+
+
 cd ..
+
 cd valkyrie-app
-docker run -p 8080:8080 <Docker Image>:<Tag Name> &
+
+docker run -p 8080:8080 $DOCKER_IMAGE_WITH_TAG_NAME &
+
 cd ..
+
 cd marking
+
 ./step2_v2.sh
+
 bash ~/marking/step2_v2.sh
 
 
-Task 3:-
+
 
 cd ..
+
 cd valkyrie-app
 
-gcloud artifacts repositories create Change_repo \
+gcloud artifacts repositories create $REPOSITORY \
     --repository-format=docker \
     --location=us-central1 \
-    --description="subcribe to quciklab" \
+    --description="SUBSCRIBE to Atul Gupta" \
     --async 
 
 gcloud auth configure-docker us-central1-docker.pkg.dev
 
 docker images
 
-docker tag Image_ID us-central1-docker.pkg.dev/PROJECT-ID/REPOSITORY/64a9d8ce8d73:v0.0.3
-
-docker push us-central1-docker.pkg.dev/PROJECT-ID/REPOSITORY/64a9d8ce8d73:v0.0.3
 
 
 
-Task 4:-
 
-sed -i s#IMAGE_HERE#us-central1-docker.pkg.dev/PROJECT-ID/REPOSITORY/<Docker Image>:<Tag Name>#g k8s/deployment.yaml
+docker tag <IMAGE-ID> us-central1-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$DOCKER_IMAGE_WITH_TAG_NAME
 
-gcloud container clusters get-credentials valkyrie-dev --zone us-east1-d
-kubectl create -f k8s/deployment.yaml
-kubectl create -f k8s/service.yaml
+
+
+
+docker push us-central1-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$DOCKER_IMAGE_WITH_TAG_NAME
+sed -i s#IMAGE_HERE#us-central1-docker.pkg.dev/$PROJECT_ID/$REPOSITORY/$DOCKER_IMAGE_WITH_TAG_NAME#g k8s/deployment.yaml
+
+
+
+
+
