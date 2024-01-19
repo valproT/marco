@@ -1,4 +1,5 @@
 #include<iostream>
+#include<ctime>
 using namespace std;
 
 int max(int a, int b) {
