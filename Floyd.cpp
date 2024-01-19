@@ -1,4 +1,5 @@
 #include <iostream>
+
 using namespace std;
 
 class Floyd
@@ -72,9 +73,9 @@ int main()
 
     cout << "\nMatrix of input data is\n";
     find.print(p, vertices);
-
+    clock_t start= clock();
     find.floyds(p, vertices);
-
+    clock_t end= clock();
     cout << "\nTransitive closure is\n";
     find.print(p, vertices);
 
@@ -89,5 +90,7 @@ int main()
             }
         }
     }
+    double time=double(end-start)/double(CLOCKS_PER_SEC);
+    cout<<"\nEXECUTION TIME :"<<fixed<<time;
     return 0;
 }
